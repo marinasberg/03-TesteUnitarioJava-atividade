@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * Testes unitários para a classe Conta.
@@ -132,6 +133,14 @@ class ContaTest {
         var conta = new Conta("Maria", 100);
         conta.sacar(40);
         assertEquals(60, conta.getSaldo(), 0.001);
+}
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0, -10})
+    void sacar_ValorNaoPositivo_LancaIllegalArgumentException(double valor) {
+        var conta = new Conta("Maria", 100);
+        assertThrows(IllegalArgumentException.class, () -> conta.sacar(valor));
+        assertEquals(100, conta.getSaldo(), 0.001);
 }
 
     // =======================================================
