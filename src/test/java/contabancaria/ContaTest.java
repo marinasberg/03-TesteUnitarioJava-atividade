@@ -170,6 +170,16 @@ class ContaTest {
         assertEquals(150, destino.getSaldo(), 0.001);
     }
 
+    @Test
+    void transferir_DestinoInativo_LancaIllegalStateException() {
+        var origem = new Conta("Maria", 200);
+        var destino = new Conta("João");
+        destino.encerrar();
+        assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 50));
+        assertEquals(200, origem.getSaldo(), 0.001);
+        assertEquals(0, destino.getSaldo(), 0.001);
+    }
+
     // =======================================================
     // Testes para encerrar
     // Sugestão de testes:
