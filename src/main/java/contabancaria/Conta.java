@@ -82,6 +82,9 @@ public void depositar(double valor) {
      *   - O saldo de ambas as contas deve ser atualizado corretamente.
      */
     public void transferir(Conta destino, double valor) {
+        if (!destino.isAtiva()) {
+            throw new IllegalStateException("A conta de destino está encerrada.");
+        }
         sacar(valor);
         destino.depositar(valor);
     }
