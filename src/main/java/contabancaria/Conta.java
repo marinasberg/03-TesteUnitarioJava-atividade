@@ -52,10 +52,9 @@ public class Conta {
      *   - Conta deve estar ativa (lançar IllegalStateException).
      *   - O saldo deve ser atualizado corretamente.
      */
-    public void depositar(double valor) {
-        // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
-    }
+public void depositar(double valor) {
+    saldo += valor;
+}
 
     /**
      * Saca um valor da conta.
