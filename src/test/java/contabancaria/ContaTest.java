@@ -211,4 +211,4 @@ class ContaTest {
         assertThrows(IllegalStateException.class, () -> conta.encerrar());
         assertFalse(conta.isAtiva());
     }
-}
+} 
